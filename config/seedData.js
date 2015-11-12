@@ -6,6 +6,8 @@ module.exports = function () {
     name: 'Alice FM',
     imgUrl: 'http://cdn-radiotime-logos.tunein.com/s33778q.png',
     streamUrl: 'http://8343.live.streamtheworld.com/KLLCFM_SC',
+    reliability: 34,
+    popularity: 3.7,
     tags: ['modern-rock', 'san-francisco', 'music']
   })
     .then(function () {
@@ -14,6 +16,8 @@ module.exports = function () {
         name: 'CBS Sports Radio',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s188593q.png',
         streamUrl: 'http://8303.live.streamtheworld.com:443/CBSSPORTS_SC',
+        reliability: 72,
+        popularity: 2.1,
         tags: ['sports', 'san-francisco', 'talk']
       });
     })
@@ -23,6 +27,8 @@ module.exports = function () {
         name: 'Smooth Jazz',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s249973q.png',
         streamUrl: 'http://tuneinads.moodmedia.com/streams/tunein_smooth_jazz_with_ads.mp3',
+        reliability: 93,
+        popularity: 4.6,
         tags: ['jazz', 'chicago', 'music', 'top']
       });
     })
@@ -32,6 +38,8 @@ module.exports = function () {
         name: 'KRTY Country',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s35159q.png',
         streamUrl: 'http://icy3.abacast.com/empirebroadcasting-krtyfmmp3-64',
+        reliability: 83,
+        popularity: 4.1,
         tags: ['country', 'san-jose', 'music', 'top']
       });
     })
@@ -43,6 +51,8 @@ module.exports = function () {
         name: 'Sounds of the 80s',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s235391q.png',
         streamUrl: 'http://tuneinads.moodmedia.com/streams/tunein_sounds_of_the_80s_with_ads.mp3',
+        reliability: 99,
+        popularity: 4.9,
         tags: ['80s', 'united-states', 'music']
       });
     })
@@ -53,6 +63,8 @@ module.exports = function () {
         name: 'Jazz FM',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s45300q.png',
         streamUrl: 'http://tx.sharp-stream.com/icecast.php?i=jazzfmmobile.aac',
+        reliability: 93,
+        popularity: 3.5,
         tags: ['jazz', 'san-jose', 'music', 'soul', 'r&b']
       });
     })
@@ -63,6 +75,8 @@ module.exports = function () {
         name: 'Country Hits',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s249981q.png',
         streamUrl: 'http://tuneinads.moodmedia.com/streams/tunein_new_country_hits_with_ads.mp3',
+        reliability: 88,
+        popularity: 4.8,
         tags: ['country', 'united-states', 'music', 'top']
       });
     })
@@ -73,6 +87,8 @@ module.exports = function () {
         name: 'NBC Sports',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s179779q.png',
         streamUrl: 'http://icy3.abacast.com/dialglobal-nbcsportsaac-48',
+        reliability: 63,
+        popularity: 3.1,
         tags: ['sports', 'united-states', 'talk']
       });
     })
@@ -83,6 +99,8 @@ module.exports = function () {
         name: 'China News',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s228670q.png',
         streamUrl: 'http://listen.radionomy.com/ChinaNews',
+        reliability: 17,
+        popularity: 1.8,
         tags: ['china', 'news', 'talk', 'music', 'pop']
       });
     })
@@ -93,6 +111,8 @@ module.exports = function () {
         name: 'Amsterdam Deep House',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s255577q.png',
         streamUrl: 'http://listen.radionomy.com/amsterdamdeephouseradio',
+        reliability: 49,
+        popularity: 2.0,
         tags: ['house', 'deep-house', 'amsterdam', 'music']
       });
     })
@@ -103,6 +123,8 @@ module.exports = function () {
         name: '关注中国',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s25629q.png',
         streamUrl: 'http://telechargement.rfi.fr/rfi/chinois/audio/modules/actu/201406/Special_4_juin_20140606_ITW_Zhang_Boshu.mp3',
+        reliability: 63,
+        popularity: 2.3,
         tags: ['talk', 'china', 'news']
       });
     })
@@ -113,6 +135,8 @@ module.exports = function () {
         name: 'KRTY Country',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s35159q.png',
         streamUrl: 'http://icy3.abacast.com/empirebroadcasting-krtyfmmp3-64',
+        reliability: 83,
+        popularity: 4.1,
         tags: ['country', 'san-jose', 'music']
       });
     })
@@ -123,6 +147,8 @@ module.exports = function () {
         name: 'Jazz FM',
         imgUrl: 'http://cdn-radiotime-logos.tunein.com/s45300q.png',
         streamUrl: 'http://tx.sharp-stream.com/icecast.php?i=jazzfmmobile.aac',
+        reliability: 93,
+        popularity: 4.6,
         tags: ['jazz', 'san-jose', 'music', 'soul', 'r&b']
       });
     })
