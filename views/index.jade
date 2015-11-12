@@ -1,0 +1,48 @@
+extends layout
+
+block root-content
+    header
+        h1 TuneIn's Front End SPA Project
+
+    .grid.grid-pad
+        .col-1-1.section
+            h2 Your mission
+            p Hey Front End developer. Welcome. Your mission, should you chose to accept it, is to carve out 2 hours and create a single page app (SPA) using <a href='#api'>the mini TuneIn station API</a> defined below
+
+        .col-1-1.section
+            .warning Hey this is important!
+            p We hope you can spend about two hours on this project. If you can finish faster -- great! If not, limit yourself and don't spend much longer than 2 hours MAX.
+
+        .col-1-1.section
+            h3 Your Tasks
+            ul
+                li Be creative with this. We want to see a functional site that uses the api. When in doubt, make an executive decision. Functionality is more important than the look and feel. If you finish early, feel free to polish it up.
+                li The home page of your app shows a list of available stations to play. You decide how you want to order the stations and how they are displayed.
+                li A user should be able to click on a station in the list
+                li Once a station is clicked the page shows details about the station and begins playing the stream
+                li Be creative with tags. Can you help a user decide what to listen to based on tags?
+                li Once finished, send your solution files to <a href="mailto:michael@tunein.com?Subject=Front End SPA Project">Michael</a>
+
+        .col-1-1.section
+            h3 Some tips
+            ul
+                li Use any languages, frameworks, or libraries. Pick something you are comfortable with.
+                li Assume you only need to support modern evergreen browsers.
+                li Assume streams can be played with the html audio tag. Don't worry about styling this (unless you want to)
+
+        .col-1-2.section#api
+            h2 Mini TuneIn API
+
+            p All API requests are made to:
+            .code http://frontend-tunein.herokuapp.com/api/<version>
+
+            .api-section
+                h3 GET Stations
+                p List all available stations
+
+                .code GET /api/v1/stations
+
+            .api-section
+                h3 GET Station
+                p Get station by id
+                .code GET /api/v1/station/:id

@@ -1,0 +1,28 @@
+{
+  "name": "tune-web-api-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "ejs": "^2.3.1",
+    "express": "~4.0.0",
+    "hbs": "^3.1.1",
+    "lodash": "^3.3.1",
+    "morgan": "~1.0.0",
+    "node-cache": "^3.0.0",
+    "node-uuid": "^1.4.3",
+    "q": "~1.0.x",
+    "require-dir": "^0.1.0",
+    "serve-favicon": "^2.0.1",
+    "stylus": "^0.47.2"
+  },
+  "author": "sandersen",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.8.0"
+  }
+}
