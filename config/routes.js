@@ -77,9 +77,26 @@ function registerErrorHandlers(router) {
   });
 }
 
+function enableCors(app){
+  app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+      res.send(200);
+    }
+    else {
+      next();
+    }
+  });
+}
+
 module.exports = function (app, router) {
   registerViewControllers(router);
 
+  enableCors(app);
   registerApiControllers(router);
 
   registerErrorHandlers(router);
