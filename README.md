@@ -52,7 +52,7 @@ or you can install with Brew
 
 ####Clone the repo locally
 	
-	git clone https://github.com/andosw/web-project.git
+	git clone https://github.com/tunein/FrontEndTakeHome_Challenge.git
 
 #### Install dependencies with NPM
 From within the project directory 
