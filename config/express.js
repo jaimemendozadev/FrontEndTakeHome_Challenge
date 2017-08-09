@@ -13,13 +13,8 @@ module.exports = function (app, config) {
     // so we can get data from a POST
     app.use(bodyParser());
 
-    app.set('views', config.rootPath + 'views');
+    //Deleted all reference to Jade Views from Express server
 
-    // Use jade as the view engine
-    app.set('view engine', 'jade');
-
-    // For Handlebars
-    // app.set('view engine', 'hbs');
 
     // setup stylus middleware
     app.use(stylus.middleware(

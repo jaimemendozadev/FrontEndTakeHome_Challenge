@@ -26,24 +26,8 @@ function registerErrorHandlers(router) {
     console.log('Not Found Handler: ', req.url);
 
     res.status(404);
+    res.send({error: 'Not found'});
 
-    // respond with html page
-    if (req.accepts('html')) {
-      res.render('error', {
-        url: req.url,
-        title: '404 Page Not Found'
-      });
-      return;
-    }
-
-    // respond with json
-    if (req.accepts('json')) {
-      res.send({error: 'Not found'});
-      return;
-    }
-
-    // default to plain-text. send()
-    res.type('txt').send('Not found');
 
     next();
   });
@@ -56,23 +40,8 @@ function registerErrorHandlers(router) {
 
     res.status(err.status || 500);
 
-    // respond with html page
-    if (req.accepts('html')) {
-      res.render('error', {
-        url: req.url,
-        title: '500 Internal Server Error'
-      });
-    }
-
-    // respond with json
-    if (req.accepts('json')) {
-      res.send({error: 'Internal Server Error'});
-      return;
-    }
-
-    // default to plain-text. send()
-    res.type('txt').send('Interal Server Error');
-
+    res.send({error: 'Internal Server Error'});
+    
     next();
   });
 }
