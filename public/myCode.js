@@ -28505,7 +28505,10 @@ var App = function (_Component) {
           'TuneIn\'s Front End SPA Project'
         ),
         console.log("the url is ", this.state.stations[0].streamUrl),
-        _react2.default.createElement(_reactPlayer2.default, { url: this.state.stations[0].streamUrl, playing: true }),
+        _react2.default.createElement(_reactPlayer2.default, {
+          controls: true,
+          width: '30%',
+          height: '30%', url: 'http://icy3.abacast.com/empirebroadcasting-krtyfmmp3-64', playing: true }),
         _react2.default.createElement(
           _semanticUiReact.List,
           null,
