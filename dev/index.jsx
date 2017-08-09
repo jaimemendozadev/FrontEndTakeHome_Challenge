@@ -34,6 +34,7 @@ class App extends Component {
     }
     return(
       <div>
+        <h3>TuneIn's Front End SPA Project</h3>
         {console.log("the url is ", this.state.stations[0].streamUrl)}
         <ReactPlayer url={this.state.stations[0].streamUrl} playing />
       

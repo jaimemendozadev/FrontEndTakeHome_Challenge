@@ -28499,6 +28499,11 @@ var App = function (_Component) {
       return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(
+          'h3',
+          null,
+          'TuneIn\'s Front End SPA Project'
+        ),
         console.log("the url is ", this.state.stations[0].streamUrl),
         _react2.default.createElement(_reactPlayer2.default, { url: this.state.stations[0].streamUrl, playing: true }),
         _react2.default.createElement(
@@ -66636,7 +66641,7 @@ var RadioItem = function (_Component) {
         _react2.default.createElement(
           _semanticUiReact.List.Header,
           { as: 'a' },
-          'station.name'
+          station.name
         ),
         _react2.default.createElement(
           _semanticUiReact.List.Description,

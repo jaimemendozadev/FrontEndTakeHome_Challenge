@@ -22,7 +22,7 @@ class RadioItem extends Component {
   displayInfo(station){
     return(
       <List.Content>
-        <List.Header as='a'>station.name</List.Header>
+        <List.Header as='a'>{station.name}</List.Header>
         <List.Description>
           <p>Popularity: {station.popularity}</p>
           <p>Reliability: {station.reliability}</p>

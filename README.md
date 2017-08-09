@@ -38,3 +38,12 @@ List all available stations
  Get station by id
 
     GET /api/v1/station/:id
+
+## How to get started
+In your terminal:
+
+First, run `$ npm run build` to build the React project files.
+
+Second, start the server with `$ npm start` and go to `http://localhost:8080` on your favorite browser.
+
+Voila! You should see a list of radio stations on the page.
