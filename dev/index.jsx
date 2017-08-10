@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ReactPlayer from 'react-player';
-import { List } from 'semantic-ui-react';
+import { Card, Container, Header, List } from 'semantic-ui-react';
+
+import CardItem from './CardItem.jsx';
 import RadioItem from './RadioItem.jsx';
 
 class App extends Component {
@@ -54,8 +56,8 @@ class App extends Component {
       )
     }
     return(
-      <div>
-        <h3>TuneIn's Front End SPA Project</h3>
+      <Container className='clearfix'>
+        <Header as='h1'>TuneIn's Front End SPA Project</Header>
         {console.log("the current stream is ", this.state.current)}
 
          <ReactPlayer 
@@ -63,21 +65,21 @@ class App extends Component {
               width='50%'
               height='50%' 
               url={this.state.current ? this.state.current : this.state.fallBack} 
-              onError={this.handleError}
+              onError={this.handleError} 
               playing={true} /> 
       
-        <List>
+        <Card.Group>
           {this.state.stations.map((station) => {
-            return <RadioItem 
+            return <CardItem 
                       key={station.id} 
                       stationPick={this.stationPick} 
                       station={station} />
           })}
-        </List>
-      </div>
+        </Card.Group>
+      </Container>
     )
   }
 }
 
 
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('.target'));

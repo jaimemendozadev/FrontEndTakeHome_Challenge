@@ -30172,6 +30172,10 @@ var _reactPlayer2 = _interopRequireDefault(_reactPlayer);
 
 var _semanticUiReact = __webpack_require__(278);
 
+var _CardItem = __webpack_require__(908);
+
+var _CardItem2 = _interopRequireDefault(_CardItem);
+
 var _RadioItem = __webpack_require__(907);
 
 var _RadioItem2 = _interopRequireDefault(_RadioItem);
@@ -30246,11 +30250,11 @@ var App = function (_Component) {
         );
       }
       return _react2.default.createElement(
-        'div',
-        null,
+        _semanticUiReact.Container,
+        { className: 'clearfix' },
         _react2.default.createElement(
-          'h3',
-          null,
+          _semanticUiReact.Header,
+          { as: 'h1' },
           'TuneIn\'s Front End SPA Project'
         ),
         console.log("the current stream is ", this.state.current),
@@ -30262,10 +30266,10 @@ var App = function (_Component) {
           onError: this.handleError,
           playing: true }),
         _react2.default.createElement(
-          _semanticUiReact.List,
+          _semanticUiReact.Card.Group,
           null,
           this.state.stations.map(function (station) {
-            return _react2.default.createElement(_RadioItem2.default, {
+            return _react2.default.createElement(_CardItem2.default, {
               key: station.id,
               stationPick: _this3.stationPick,
               station: station });
@@ -30278,7 +30282,7 @@ var App = function (_Component) {
   return App;
 }(_react.Component);
 
-_reactDom2.default.render(_react2.default.createElement(App, null), document.querySelector('.container'));
+_reactDom2.default.render(_react2.default.createElement(App, null), document.querySelector('.target'));
 
 /***/ }),
 /* 452 */
@@ -66727,6 +66731,126 @@ var RadioItem = function (_Component) {
 }(_react.Component);
 
 exports.default = RadioItem;
+
+/***/ }),
+/* 908 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _semanticUiReact = __webpack_require__(278);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CardItem = function (_Component) {
+  _inherits(CardItem, _Component);
+
+  function CardItem(props) {
+    _classCallCheck(this, CardItem);
+
+    var _this = _possibleConstructorReturn(this, (CardItem.__proto__ || Object.getPrototypeOf(CardItem)).call(this, props));
+
+    _this.state = {
+      show: false
+    };
+    _this.showInfo = _this.showInfo.bind(_this);
+    _this.handleClick = _this.handleClick.bind(_this);
+    _this.displayInfo = _this.displayInfo.bind(_this);
+    return _this;
+  }
+
+  _createClass(CardItem, [{
+    key: 'showInfo',
+    value: function showInfo() {
+      var currentView = this.state.show;
+      this.setState({
+        show: !currentView
+      });
+    }
+  }, {
+    key: 'handleClick',
+    value: function handleClick(event) {
+      event.preventDefault();
+      console.log("inside handleClick");
+      this.props.stationPick(this.props.station.streamUrl);
+    }
+  }, {
+    key: 'displayInfo',
+    value: function displayInfo(station) {
+      return _react2.default.createElement(
+        _semanticUiReact.Card.Content,
+        { extra: true },
+        _react2.default.createElement(
+          _semanticUiReact.Card.Description,
+          null,
+          _react2.default.createElement(
+            'p',
+            null,
+            'Popularity: ',
+            station.popularity
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'Reliability: ',
+            station.reliability
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'a',
+              { onClick: this.handleClick, href: '#' },
+              'Click to Play this Station'
+            )
+          )
+        )
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _semanticUiReact.Card,
+        { key: this.props.station.id },
+        _react2.default.createElement(
+          _semanticUiReact.Card.Content,
+          null,
+          _react2.default.createElement(_semanticUiReact.Image, {
+            onClick: this.showInfo,
+            src: this.props.station.imgUrl }),
+          _react2.default.createElement(
+            _semanticUiReact.Card.Header,
+            null,
+            this.props.station.name
+          )
+        ),
+        this.state.show ? this.displayInfo(this.props.station) : ''
+      );
+    }
+  }]);
+
+  return CardItem;
+}(_react.Component);
+
+exports.default = CardItem;
 
 /***/ })
 /******/ ]);
