@@ -15,6 +15,7 @@ class App extends Component {
     }
 
     this.stationPick = this.stationPick.bind(this);
+    this.handleError = this.handleError.bind(this);
     
   }
 
@@ -24,6 +25,14 @@ class App extends Component {
       current: station
     })
 
+  }
+
+  handleError(){
+    console.log("handleError fires");
+    var fallBack = this.state.fallBack;
+    this.setState({
+      current: fallBack
+    })
   }
 
   componentDidMount(){
@@ -48,12 +57,14 @@ class App extends Component {
       <div>
         <h3>TuneIn's Front End SPA Project</h3>
         {console.log("the current stream is ", this.state.current)}
-        <ReactPlayer 
+
+         <ReactPlayer 
               controls
-              width='30%'
-              height='30%' 
+              width='50%'
+              height='50%' 
               url={this.state.current ? this.state.current : this.state.fallBack} 
-              playing />
+              onError={this.handleError}
+              playing={true} /> 
       
         <List>
           {this.state.stations.map((station) => {

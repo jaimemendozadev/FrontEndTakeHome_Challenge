@@ -30199,6 +30199,7 @@ var App = function (_Component) {
     };
 
     _this.stationPick = _this.stationPick.bind(_this);
+    _this.handleError = _this.handleError.bind(_this);
 
     return _this;
   }
@@ -30209,6 +30210,15 @@ var App = function (_Component) {
       console.log("inside stationPick", station);
       this.setState({
         current: station
+      });
+    }
+  }, {
+    key: 'handleError',
+    value: function handleError() {
+      console.log("handleError fires");
+      var fallBack = this.state.fallBack;
+      this.setState({
+        current: fallBack
       });
     }
   }, {
@@ -30246,9 +30256,10 @@ var App = function (_Component) {
         console.log("the current stream is ", this.state.current),
         _react2.default.createElement(_reactPlayer2.default, {
           controls: true,
-          width: '30%',
-          height: '30%',
+          width: '50%',
+          height: '50%',
           url: this.state.current ? this.state.current : this.state.fallBack,
+          onError: this.handleError,
           playing: true }),
         _react2.default.createElement(
           _semanticUiReact.List,
