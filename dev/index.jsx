@@ -9,9 +9,21 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      stations: []
+      stations: [],
+      current: '',
+      fallBack: 'http://icy3.abacast.com/empirebroadcasting-krtyfmmp3-64'
     }
+
+    this.stationPick = this.stationPick.bind(this);
     
+  }
+
+  stationPick(station){
+    console.log("inside stationPick", station)
+    this.setState({
+      current: station
+    })
+
   }
 
   componentDidMount(){
@@ -35,15 +47,20 @@ class App extends Component {
     return(
       <div>
         <h3>TuneIn's Front End SPA Project</h3>
-        {console.log("the url is ", this.state.stations[0].streamUrl)}
+        {console.log("the current stream is ", this.state.current)}
         <ReactPlayer 
               controls
               width='30%'
-              height='30%' url="http://icy3.abacast.com/empirebroadcasting-krtyfmmp3-64" playing />
+              height='30%' 
+              url={this.state.current ? this.state.current : this.state.fallBack} 
+              playing />
       
         <List>
           {this.state.stations.map((station) => {
-            return <RadioItem key={station.id} station={station} />
+            return <RadioItem 
+                      key={station.id} 
+                      stationPick={this.stationPick} 
+                      station={station} />
           })}
         </List>
       </div>

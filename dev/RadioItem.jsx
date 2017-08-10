@@ -8,6 +8,7 @@ class RadioItem extends Component {
       show: false
     }
     this.showInfo = this.showInfo.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.displayInfo = this.displayInfo.bind(this);
   }
 
@@ -18,6 +19,11 @@ class RadioItem extends Component {
     });
   }
 
+  handleClick(event){
+    event.preventDefault();
+    console.log("inside handleClick");
+    this.props.stationPick(this.props.station.streamUrl);
+  }
 
   displayInfo(station){
     return(
@@ -26,10 +32,13 @@ class RadioItem extends Component {
         <List.Description>
           <p>Popularity: {station.popularity}</p>
           <p>Reliability: {station.reliability}</p>
+          <p><a onClick={this.handleClick} href="#">Click to Play this Station</a></p>
         </List.Description>
       </List.Content>
     )
   }
+
+  
 
   render(){
     return(
