@@ -42,11 +42,13 @@ List all available stations
 ## How to get started
 In your terminal:
 
-First, run `$ npm run build` to build the React project files.
+First, go to the root directory of the project folder. From there, run `$ npm install` to install all the dependencies.
 
-Second, start the server with `$ npm start` and go to `http://localhost:8080` on your favorite browser.
+Second, run `$ npm run build` to build the React project files. <strong>Please wait until ALL the files finish building.</strong>
 
-Voila! You should see a list of radio stations on the page and one of the radio feeds should automatically start playing in ReactPlayer.
+Third, start the server with `$ npm start`. <strong>Please wait until you see the Stations finish loading in your terminal.</strong>
+
+Go to `http://localhost:8080` on your favorite browser and voila! You should see a list of radio stations on the page and one of the radio feeds should automatically start playing in ReactPlayer.
 
 Please note our API is a work in progress. Some of the streams may not work. Also, clicking on the `Click to Play this Station` link won't automatically play the stream in ReactPlayer. You'll have to manually click on the Play button in ReactPlayer.
 

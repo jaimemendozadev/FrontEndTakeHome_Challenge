@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ReactPlayer from 'react-player';
 import { Card, Container, Header, List } from 'semantic-ui-react';
-
 import CardItem from './CardItem.jsx';
-import RadioItem from './RadioItem.jsx';
 
 class App extends Component {
   constructor(props){
