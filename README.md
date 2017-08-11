@@ -44,7 +44,7 @@ In your terminal:
 
 First, go to the root directory of the project folder. From there, run `$ npm install` to install all the dependencies. <strong>Please wait until ALL the dependencies finish loading.</strong>
 
-Second, run `$ npm run build` to build the React project files. <strong>Please wait until ALL the files finish building.</strong>
+Second, in another terminal tab (at the root directory of the project folder) run `$ npm run build` to build the React project files. <strong>Please wait until ALL the files finish building.</strong>
 
 Third, start the server with `$ npm start`. <strong>Please wait until you see the Stations finish loading in your terminal.</strong>
 
