@@ -46,4 +46,11 @@ First, run `$ npm run build` to build the React project files.
 
 Second, start the server with `$ npm start` and go to `http://localhost:8080` on your favorite browser.
 
-Voila! You should see a list of radio stations on the page.
+Voila! You should see a list of radio stations on the page and one of the radio feeds should automatically start playing in ReactPlayer.
+
+Please note our API is a work in progress. Some of the streams may not work. Also, clicking on the `Click to Play this Station` link won't automatically play the stream in ReactPlayer. You'll have to manually click on the Play button in ReactPlayer.
+
+## Current issues we'd like to address with more time
+- Fix styling on the page
+- Fix API streaming issues
+- Do something more creative with stream tags to make suggestions to end user
