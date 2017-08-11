@@ -21386,13 +21386,13 @@ module.exports = isString;
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {// Copy of sindre's leven, wrapped in dead code elimination for production
 // https://github.com/sindresorhus/leven/blob/master/index.js
+/* eslint-disable complexity, import/no-mutable-exports, no-multi-assign, no-nested-ternary, no-plusplus */
 
 var leven = function leven() {
   return 0;
 };
 
 if (process.env.NODE_ENV !== 'production') {
-  /* eslint-disable complexity, no-nested-ternary */
   var arr = [];
   var charCodeCache = [];
 
@@ -24184,10 +24184,11 @@ function FormGroup(props) {
       className = props.className,
       grouped = props.grouped,
       inline = props.inline,
+      unstackable = props.unstackable,
       widths = props.widths;
 
 
-  var classes = __WEBPACK_IMPORTED_MODULE_2_classnames___default()(Object(__WEBPACK_IMPORTED_MODULE_5__lib__["x" /* useKeyOnly */])(grouped, 'grouped'), Object(__WEBPACK_IMPORTED_MODULE_5__lib__["x" /* useKeyOnly */])(inline, 'inline'), Object(__WEBPACK_IMPORTED_MODULE_5__lib__["D" /* useWidthProp */])(widths, null, true), 'fields', className);
+  var classes = __WEBPACK_IMPORTED_MODULE_2_classnames___default()(Object(__WEBPACK_IMPORTED_MODULE_5__lib__["x" /* useKeyOnly */])(grouped, 'grouped'), Object(__WEBPACK_IMPORTED_MODULE_5__lib__["x" /* useKeyOnly */])(inline, 'inline'), Object(__WEBPACK_IMPORTED_MODULE_5__lib__["x" /* useKeyOnly */])(unstackable, 'unstackable'), Object(__WEBPACK_IMPORTED_MODULE_5__lib__["D" /* useWidthProp */])(widths, null, true), 'fields', className);
   var rest = Object(__WEBPACK_IMPORTED_MODULE_5__lib__["p" /* getUnhandledProps */])(FormGroup, props);
   var ElementType = Object(__WEBPACK_IMPORTED_MODULE_5__lib__["o" /* getElementType */])(FormGroup, props);
 
@@ -24198,7 +24199,7 @@ function FormGroup(props) {
   );
 }
 
-FormGroup.handledProps = ['as', 'children', 'className', 'grouped', 'inline', 'widths'];
+FormGroup.handledProps = ['as', 'children', 'className', 'grouped', 'inline', 'unstackable', 'widths'];
 FormGroup._meta = {
   name: 'FormGroup',
   parent: 'Form',
@@ -24220,6 +24221,9 @@ process.env.NODE_ENV !== "production" ? FormGroup.propTypes = {
 
   /** Multiple fields may be inline in a row. */
   inline: __WEBPACK_IMPORTED_MODULE_5__lib__["m" /* customPropTypes */].every([__WEBPACK_IMPORTED_MODULE_5__lib__["m" /* customPropTypes */].disallow(['grouped']), __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool]),
+
+  /** A form group can prevent itself from stacking on mobile. */
+  unstackable: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.bool,
 
   /** Fields Groups can specify their width in grid columns or automatically divide fields to be equal width. */
   widths: __WEBPACK_IMPORTED_MODULE_3_prop_types___default.a.oneOf([].concat(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray___default()(__WEBPACK_IMPORTED_MODULE_5__lib__["c" /* SUI */].WIDTHS), ['equal']))
@@ -26714,7 +26718,7 @@ function StepGroup(props) {
       unstackable = props.unstackable,
       vertical = props.vertical;
 
-  var classes = __WEBPACK_IMPORTED_MODULE_3_classnames___default()('ui', size, Object(__WEBPACK_IMPORTED_MODULE_6__lib__["x" /* useKeyOnly */])(fluid, 'fluid'), Object(__WEBPACK_IMPORTED_MODULE_6__lib__["x" /* useKeyOnly */])(ordered, 'ordered'), Object(__WEBPACK_IMPORTED_MODULE_6__lib__["x" /* useKeyOnly */])(unstackable, 'unstackable,'), Object(__WEBPACK_IMPORTED_MODULE_6__lib__["x" /* useKeyOnly */])(vertical, 'vertical'), Object(__WEBPACK_IMPORTED_MODULE_6__lib__["B" /* useValueAndKey */])(stackable, 'stackable'), 'steps', className);
+  var classes = __WEBPACK_IMPORTED_MODULE_3_classnames___default()('ui', size, Object(__WEBPACK_IMPORTED_MODULE_6__lib__["x" /* useKeyOnly */])(fluid, 'fluid'), Object(__WEBPACK_IMPORTED_MODULE_6__lib__["x" /* useKeyOnly */])(ordered, 'ordered'), Object(__WEBPACK_IMPORTED_MODULE_6__lib__["x" /* useKeyOnly */])(unstackable, 'unstackable'), Object(__WEBPACK_IMPORTED_MODULE_6__lib__["x" /* useKeyOnly */])(vertical, 'vertical'), Object(__WEBPACK_IMPORTED_MODULE_6__lib__["B" /* useValueAndKey */])(stackable, 'stackable'), 'steps', className);
   var rest = Object(__WEBPACK_IMPORTED_MODULE_6__lib__["p" /* getUnhandledProps */])(StepGroup, props);
   var ElementType = Object(__WEBPACK_IMPORTED_MODULE_6__lib__["o" /* getElementType */])(StepGroup, props);
 
@@ -27239,7 +27243,6 @@ var RatingIcon = function (_Component) {
             onClick(e, _this.props);
             break;
           default:
-            return;
         }
       }
     }, _this.handleMouseEnter = function (e) {
@@ -28388,15 +28391,18 @@ var _initialiseProps = function _initialiseProps() {
     var key = child.key;
 
 
-    return __WEBPACK_IMPORTED_MODULE_11_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__Transition__["a" /* default */], {
-      animation: animation,
-      children: child,
-      duration: duration,
-      key: key,
-      onHide: _this3.handleOnHide,
-      reactKey: key,
-      transitionOnMount: transitionOnMount
-    });
+    return __WEBPACK_IMPORTED_MODULE_11_react___default.a.createElement(
+      __WEBPACK_IMPORTED_MODULE_13__Transition__["a" /* default */],
+      {
+        animation: animation,
+        duration: duration,
+        key: key,
+        onHide: _this3.handleOnHide,
+        reactKey: key,
+        transitionOnMount: transitionOnMount
+      },
+      child
+    );
   };
 };
 
@@ -54973,6 +54979,7 @@ module.exports = func;
 /* unused harmony export debug */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__isBrowser__ = __webpack_require__(353);
 
+
 var _debug = void 0;
 var noop = function noop() {
   return undefined;
@@ -56477,42 +56484,78 @@ var keyboardKey = {
   PrintScreen: 44,
   Insert: 45,
   Delete: 46,
-  0: 48, ')': 48,
-  1: 49, '!': 49,
-  2: 50, '@': 50,
-  3: 51, '#': 51,
-  4: 52, $: 52,
-  5: 53, '%': 53,
-  6: 54, '^': 54,
-  7: 55, '&': 55,
-  8: 56, '*': 56,
-  9: 57, '(': 57,
-  a: 65, A: 65,
-  b: 66, B: 66,
-  c: 67, C: 67,
-  d: 68, D: 68,
-  e: 69, E: 69,
-  f: 70, F: 70,
-  g: 71, G: 71,
-  h: 72, H: 72,
-  i: 73, I: 73,
-  j: 74, J: 74,
-  k: 75, K: 75,
-  l: 76, L: 76,
-  m: 77, M: 77,
-  n: 78, N: 78,
-  o: 79, O: 79,
-  p: 80, P: 80,
-  q: 81, Q: 81,
-  r: 82, R: 82,
-  s: 83, S: 83,
-  t: 84, T: 84,
-  u: 85, U: 85,
-  v: 86, V: 86,
-  w: 87, W: 87,
-  x: 88, X: 88,
-  y: 89, Y: 89,
-  z: 90, Z: 90,
+  0: 48,
+  ')': 48,
+  1: 49,
+  '!': 49,
+  2: 50,
+  '@': 50,
+  3: 51,
+  '#': 51,
+  4: 52,
+  $: 52,
+  5: 53,
+  '%': 53,
+  6: 54,
+  '^': 54,
+  7: 55,
+  '&': 55,
+  8: 56,
+  '*': 56,
+  9: 57,
+  '(': 57,
+  a: 65,
+  A: 65,
+  b: 66,
+  B: 66,
+  c: 67,
+  C: 67,
+  d: 68,
+  D: 68,
+  e: 69,
+  E: 69,
+  f: 70,
+  F: 70,
+  g: 71,
+  G: 71,
+  h: 72,
+  H: 72,
+  i: 73,
+  I: 73,
+  j: 74,
+  J: 74,
+  k: 75,
+  K: 75,
+  l: 76,
+  L: 76,
+  m: 77,
+  M: 77,
+  n: 78,
+  N: 78,
+  o: 79,
+  O: 79,
+  p: 80,
+  P: 80,
+  q: 81,
+  Q: 81,
+  r: 82,
+  R: 82,
+  s: 83,
+  S: 83,
+  t: 84,
+  T: 84,
+  u: 85,
+  U: 85,
+  v: 86,
+  V: 86,
+  w: 87,
+  W: 87,
+  x: 88,
+  X: 88,
+  y: 89,
+  Y: 89,
+  z: 90,
+  Z: 90,
   OS: 91,
   ContextMenu: 93,
   F1: 112,
@@ -56544,17 +56587,28 @@ var keyboardKey = {
   VolumeMute: 181,
   VolumeDown: 182,
   VolumeUp: 183,
-  ';': 186, ':': 186,
-  '=': 187, '+': 187,
-  ',': 188, '<': 188,
-  '-': 189, _: 189,
-  '.': 190, '>': 190,
-  '/': 191, '?': 191,
-  '`': 192, '~': 192,
-  '[': 219, '{': 219,
-  '\\': 220, '\|': 220,
-  ']': 221, '}': 221,
-  "'": 222, '"': 222,
+  ';': 186,
+  ':': 186,
+  '=': 187,
+  '+': 187,
+  ',': 188,
+  '<': 188,
+  '-': 189,
+  _: 189,
+  '.': 190,
+  '>': 190,
+  '/': 191,
+  '?': 191,
+  '`': 192,
+  '~': 192,
+  '[': 219,
+  '{': 219,
+  '\\': 220,
+  '|': 220,
+  ']': 221,
+  '}': 221,
+  "'": 222,
+  '"': 222,
   Meta: 224,
   AltGraph: 225,
   Attn: 246,
@@ -56617,7 +56671,6 @@ keyboardKey.RightSquareBracket = keyboardKey[']'];
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return objectDiff; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_isEqual__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_isEqual___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_isEqual__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_has__ = __webpack_require__(51);
@@ -56644,14 +56697,14 @@ keyboardKey.RightSquareBracket = keyboardKey[']'];
  * objectDiff(a, b)
  * //=> { foo: 'baz' }
  */
-var objectDiff = function objectDiff(source, target) {
+/* harmony default export */ __webpack_exports__["a"] = (function (source, target) {
   return __WEBPACK_IMPORTED_MODULE_2_lodash_transform___default()(source, function (res, val, key) {
     // deleted keys
     if (!__WEBPACK_IMPORTED_MODULE_1_lodash_has___default()(target, key)) res[key] = '[DELETED]';
     // new keys / changed values
     else if (!__WEBPACK_IMPORTED_MODULE_0_lodash_isEqual___default()(val, target[key])) res[key] = target[key];
   }, {});
-};
+});
 
 /***/ }),
 /* 806 */
@@ -57016,7 +57069,7 @@ var Portal = function (_Component) {
 
       debug('handlePortalMouseLeave()');
       _this.mouseLeaveTimer = _this.closeWithTimeout(e, mouseLeaveDelay);
-    }, _this.handlePortalMouseEnter = function (e) {
+    }, _this.handlePortalMouseEnter = function () {
       // In order to enable mousing from the trigger to the portal, we need to
       // clear the mouseleave timer that was set when leaving the trigger.
       var closeOnPortalMouseLeave = _this.props.closeOnPortalMouseLeave;
@@ -57187,7 +57240,8 @@ var Portal = function (_Component) {
 
       if (onUnmount) onUnmount(null, _this.props);
     }, _this.handleRef = function (c) {
-      _this.triggerNode = __WEBPACK_IMPORTED_MODULE_8_react_dom___default.a.findDOMNode(c);
+      // TODO: Replace findDOMNode with Ref component when it will be merged
+      _this.triggerNode = __WEBPACK_IMPORTED_MODULE_8_react_dom___default.a.findDOMNode(c); // eslint-disable-line react/no-find-dom-node
     }, _temp), __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(_this, _ret);
   }
 
@@ -57940,6 +57994,7 @@ Radio.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__lib__ = __webpack_require__(3);
+
 
 
 
@@ -60105,7 +60160,7 @@ var TextArea = function (_Component) {
     }
   }, {
     key: 'componentDidUpdate',
-    value: function componentDidUpdate(prevProps, prevState) {
+    value: function componentDidUpdate(prevProps) {
       // removed autoHeight
       if (!this.props.autoHeight && prevProps.autoHeight) {
         this.removeAutoHeightStyles();
@@ -60801,11 +60856,12 @@ var Form = function (_Component) {
           reply = _props.reply,
           size = _props.size,
           success = _props.success,
+          unstackable = _props.unstackable,
           warning = _props.warning,
           widths = _props.widths;
 
 
-      var classes = __WEBPACK_IMPORTED_MODULE_7_classnames___default()('ui', size, Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(error, 'error'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(inverted, 'inverted'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(loading, 'loading'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(reply, 'reply'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(success, 'success'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(warning, 'warning'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["D" /* useWidthProp */])(widths, null, true), 'form', className);
+      var classes = __WEBPACK_IMPORTED_MODULE_7_classnames___default()('ui', size, Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(error, 'error'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(inverted, 'inverted'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(loading, 'loading'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(reply, 'reply'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(success, 'success'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(unstackable, 'unstackable'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["x" /* useKeyOnly */])(warning, 'warning'), Object(__WEBPACK_IMPORTED_MODULE_10__lib__["D" /* useWidthProp */])(widths, null, true), 'form', className);
       var rest = Object(__WEBPACK_IMPORTED_MODULE_10__lib__["p" /* getUnhandledProps */])(Form, this.props);
       var ElementType = Object(__WEBPACK_IMPORTED_MODULE_10__lib__["o" /* getElementType */])(Form, this.props);
 
@@ -60840,7 +60896,7 @@ Form.Input = __WEBPACK_IMPORTED_MODULE_16__FormInput__["a" /* default */];
 Form.Radio = __WEBPACK_IMPORTED_MODULE_17__FormRadio__["a" /* default */];
 Form.Select = __WEBPACK_IMPORTED_MODULE_18__FormSelect__["a" /* default */];
 Form.TextArea = __WEBPACK_IMPORTED_MODULE_19__FormTextArea__["a" /* default */];
-Form.handledProps = ['action', 'as', 'children', 'className', 'error', 'inverted', 'loading', 'onSubmit', 'reply', 'size', 'success', 'warning', 'widths'];
+Form.handledProps = ['action', 'as', 'children', 'className', 'error', 'inverted', 'loading', 'onSubmit', 'reply', 'size', 'success', 'unstackable', 'warning', 'widths'];
 
 var _initialiseProps = function _initialiseProps() {
   var _this2 = this;
@@ -60894,7 +60950,10 @@ process.env.NODE_ENV !== "production" ? Form.propTypes = {
   /** Automatically show any success Message children. */
   success: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.bool,
 
-  /** Automatically show any warning Message children .*/
+  /** A form can prevent itself from stacking on mobile. */
+  unstackable: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.bool,
+
+  /** Automatically show any warning Message children. */
   warning: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.bool,
 
   /** Forms can automatically divide fields to be equal width. */
@@ -63241,13 +63300,13 @@ var Accordion = function (_Component) {
             _this.handleTitleClick(e, currentIndex);
             if (child.props.onClick) child.props.onClick(e, currentIndex);
           };
-          titleIndex++;
+          titleIndex += 1;
           return Object(__WEBPACK_IMPORTED_MODULE_15_react__["cloneElement"])(child, __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, child.props, { active: isActive, onClick: onClick }));
         }
 
         if (isContent) {
           var _isActive = __WEBPACK_IMPORTED_MODULE_10_lodash_has___default()(child, 'props.active') ? child.props.active : _this.isIndexActive(contentIndex);
-          contentIndex++;
+          contentIndex += 1;
           return Object(__WEBPACK_IMPORTED_MODULE_15_react__["cloneElement"])(child, __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, child.props, { active: _isActive }));
         }
 
@@ -63698,7 +63757,7 @@ var Popup = function (_Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, (_ref = Popup.__proto__ || Object.getPrototypeOf(Popup)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this.hideOnScroll = function (e) {
+    return _ret = (_temp = (_this = __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, (_ref = Popup.__proto__ || Object.getPrototypeOf(Popup)).call.apply(_ref, [this].concat(args))), _this), _this.state = {}, _this.hideOnScroll = function () {
       _this.setState({ closed: true });
       window.removeEventListener('scroll', _this.hideOnScroll);
       setTimeout(function () {
@@ -63846,7 +63905,7 @@ var Popup = function (_Component) {
       // Lets detect if the popup is out of the viewport and adjust
       // the position accordingly
       var positions = __WEBPACK_IMPORTED_MODULE_11_lodash_without___default()(POSITIONS, position).concat([position]);
-      for (var i = 0; !this.isStyleInViewport(style) && i < positions.length; i++) {
+      for (var i = 0; !this.isStyleInViewport(style) && i < positions.length; i += 1) {
         style = this.computePopupStyle(positions[i]);
         position = positions[i];
       }
@@ -64844,6 +64903,11 @@ var Search = function (_Component) {
       debug(result);
 
       __WEBPACK_IMPORTED_MODULE_14_lodash_invoke___default()(_this.props, 'onResultSelect', e, __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_extends___default()({}, _this.props, { result: result }));
+    }, _this.handleSelectionChange = function (e) {
+      debug('handleSelectionChange()');
+
+      var result = _this.getSelectedResult();
+      __WEBPACK_IMPORTED_MODULE_14_lodash_invoke___default()(_this.props, 'onSelectionChange', e, __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_extends___default()({}, _this.props, { result: result }));
     }, _this.closeOnEscape = function (e) {
       if (__WEBPACK_IMPORTED_MODULE_20__lib__["s" /* keyboardKey */].getCode(e) !== __WEBPACK_IMPORTED_MODULE_20__lib__["s" /* keyboardKey */].Escape) return;
       e.preventDefault();
@@ -64854,11 +64918,11 @@ var Search = function (_Component) {
       switch (__WEBPACK_IMPORTED_MODULE_20__lib__["s" /* keyboardKey */].getCode(e)) {
         case __WEBPACK_IMPORTED_MODULE_20__lib__["s" /* keyboardKey */].ArrowDown:
           e.preventDefault();
-          _this.moveSelectionBy(1);
+          _this.moveSelectionBy(e, 1);
           break;
         case __WEBPACK_IMPORTED_MODULE_20__lib__["s" /* keyboardKey */].ArrowUp:
           e.preventDefault();
-          _this.moveSelectionBy(-1);
+          _this.moveSelectionBy(e, -1);
           break;
         default:
           break;
@@ -64973,7 +65037,7 @@ var Search = function (_Component) {
 
 
       _this.trySetState({ value: value }, { selectedIndex: selectFirstResult ? 0 : -1 });
-    }, _this.moveSelectionBy = function (offset) {
+    }, _this.moveSelectionBy = function (e, offset) {
       debug('moveSelectionBy()');
       debug('offset: ' + offset);
       var selectedIndex = _this.state.selectedIndex;
@@ -64989,6 +65053,7 @@ var Search = function (_Component) {
 
       _this.setState({ selectedIndex: nextIndex });
       _this.scrollSelectedItemIntoView();
+      _this.handleSelectionChange(e);
     }, _this.scrollSelectedItemIntoView = function () {
       debug('scrollSelectedItemIntoView()');
       // Do not access document when server side rendering
@@ -65091,7 +65156,7 @@ var Search = function (_Component) {
 
       var count = 0;
 
-      return __WEBPACK_IMPORTED_MODULE_11_lodash_map___default()(categories, function (_ref4, name, index) {
+      return __WEBPACK_IMPORTED_MODULE_11_lodash_map___default()(categories, function (_ref4) {
         var childKey = _ref4.childKey,
             category = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default()(_ref4, ['childKey']);
 
@@ -65102,7 +65167,7 @@ var Search = function (_Component) {
         }, category);
         var renderFn = __WEBPACK_IMPORTED_MODULE_9_lodash_partialRight___default()(_this.renderResult, count);
 
-        count = count + category.results.length;
+        count += category.results.length;
 
         return __WEBPACK_IMPORTED_MODULE_19_react___default.a.createElement(
           __WEBPACK_IMPORTED_MODULE_22__SearchCategory__["a" /* default */],
@@ -65327,7 +65392,7 @@ Search._meta = {
 Search.Category = __WEBPACK_IMPORTED_MODULE_22__SearchCategory__["a" /* default */];
 Search.Result = __WEBPACK_IMPORTED_MODULE_23__SearchResult__["a" /* default */];
 Search.Results = __WEBPACK_IMPORTED_MODULE_24__SearchResults__["a" /* default */];
-Search.handledProps = ['aligned', 'as', 'category', 'categoryRenderer', 'className', 'defaultOpen', 'defaultValue', 'fluid', 'icon', 'input', 'loading', 'minCharacters', 'noResultsDescription', 'noResultsMessage', 'onBlur', 'onFocus', 'onMouseDown', 'onResultSelect', 'onSearchChange', 'open', 'resultRenderer', 'results', 'selectFirstResult', 'showNoResults', 'size', 'value'];
+Search.handledProps = ['aligned', 'as', 'category', 'categoryRenderer', 'className', 'defaultOpen', 'defaultValue', 'fluid', 'icon', 'input', 'loading', 'minCharacters', 'noResultsDescription', 'noResultsMessage', 'onBlur', 'onFocus', 'onMouseDown', 'onResultSelect', 'onSearchChange', 'onSelectionChange', 'open', 'resultRenderer', 'results', 'selectFirstResult', 'showNoResults', 'size', 'value'];
 /* harmony default export */ __webpack_exports__["a"] = (Search);
 process.env.NODE_ENV !== "production" ? Search.propTypes = {
   /** An element type to render as (string or function). */
@@ -65437,6 +65502,14 @@ process.env.NODE_ENV !== "production" ? Search.propTypes = {
    * @param {object} data - All props, includes current value of search input.
    */
   onSearchChange: __WEBPACK_IMPORTED_MODULE_18_prop_types___default.a.func,
+
+  /**
+   * Called when the active selection index is changed.
+   *
+   * @param {SyntheticEvent} event - React's original SyntheticEvent.
+   * @param {object} data - All props.
+   */
+  onSelectionChange: __WEBPACK_IMPORTED_MODULE_18_prop_types___default.a.func,
 
   // ------------------------------------
   // Style

@@ -42,7 +42,7 @@ List all available stations
 ## How to get started
 In your terminal:
 
-First, go to the root directory of the project folder. From there, run `$ npm install` to install all the dependencies.
+First, go to the root directory of the project folder. From there, run `$ npm install` to install all the dependencies. <strong>Please wait until ALL the dependencies finish loading.</strong>
 
 Second, run `$ npm run build` to build the React project files. <strong>Please wait until ALL the files finish building.</strong>
 
